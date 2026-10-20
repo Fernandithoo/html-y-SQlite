@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Base de datos local</title>
+</head>
+<body>
+  <h1>Base de datos local</h1>
+  <p>Bienvenido a la base de datos local</p>
+  <p>En este ejemplo, el formulario guarda contactos en SQLite mediante Python.</p>
+  <!-- script.js identifica este formulario por su id y envia sus datos al servidor. -->
+  <form id="registro-form">
+    <label for="nombre">Nombre:</label>
+    <!-- required evita enviar el formulario si falta alguno de los dos datos. -->
+    <input type="text" id="nombre" name="nombre" required>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+    <button type="submit">Guardar</button>
+    <!-- Genera y guarda una tanda de 30 contactos de prueba en la base de datos. -->
+    <button type="button" id="generar-contactos">Generar y guardar 30</button>
+  </form>
+  <!-- script.js muestra aqui el resultado del guardado o el mensaje de error. -->
+  <p id="estado" role="status" aria-live="polite"></p>
+  <!-- Esta sección permite revisar los correos que ya están almacenados en SQLite. -->
+  <section aria-labelledby="verificar-titulo">
+    <h2 id="verificar-titulo">Verificar correos guardados</h2>
+    <!-- Al pulsarlo, consulta la base de datos y clasifica cada correo. -->
+    <button type="button" id="verificar-contactos">Verificar base de datos</button>
+    <!-- JavaScript anuncia aquí el progreso y el resumen de la verificación. -->
+    <p id="verificacion-estado" role="status" aria-live="polite"></p>
+    <!-- La tabla aparece después de consultar y contiene una fila por contacto. -->
+    <table id="tabla-verificacion" hidden>
+      <thead>
+        <tr><th>Nombre</th><th>Email</th><th>Resultado</th></tr>
+      </thead>
+      <tbody id="resultados-verificacion"></tbody>
+    </table>
+  </section>
+  <!-- defer espera a que el HTML este listo antes de ejecutar el JavaScript. -->
+  <script src="script.js" defer></script>
+</body>
+</html>
